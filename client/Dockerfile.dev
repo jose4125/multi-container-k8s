@@ -1,0 +1,10 @@
+FROM node:alpine
+WORKDIR /usr/app
+ENV NODE_ENV=development
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
+RUN npm install \
+      && npm install react-scripts@3.4.1 -g
+COPY . .
+USER node
+CMD ["npm", "start"]

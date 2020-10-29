@@ -1,0 +1,9 @@
+FROM node:alpine
+WORKDIR /usr/app
+ENV NODE_ENV=development
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
+RUN npm install
+COPY . .
+USER node
+CMD ["npm", "run", "dev"]
